@@ -1,2 +1,6 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<h1>マイページ</h1>
+
+<h4>登録情報</h4>
+
+<%=current_customer.last_name%><%=current_customer.first_name%>
+<%=link_to "編集する", customers_edit_path,class:"btn btn-success"%>

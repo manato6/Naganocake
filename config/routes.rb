@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :public do
+  scope module: :public do
     get 'items/index'
     get 'items/show'
     get "customers/mypage"=>'customers#show'
