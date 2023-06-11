@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get "customers/mypage"=>'customers#show'
     get 'customers/information/edit'=>'customers#edit'
     patch 'customers/information'=>'customers#update'
+    get 'customers/confirm'=>'customers#confirm'
      get 'cart_items/index'
      get 'orders/new'
     get 'orders/index'

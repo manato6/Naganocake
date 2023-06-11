@@ -12,6 +12,12 @@ class Public::CustomersController < ApplicationController
     current_customer.update(customer_params)
     redirect_to customers_mypage_path
   end
+  
+  def confirm
+  end
+  
+  def unsubscribe
+  end
 
   private
 
