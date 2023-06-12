@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -9,6 +10,14 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
+namespace :admin do
+    get 'items/new'=>'items#new'
+    post 'items'=>'items#create'
+    get 'items/index'
+    get 'items/show'
+    get 'items/edit'
+  end
+
 
   scope module: :public do
     get 'items/index'
@@ -17,6 +26,7 @@ Rails.application.routes.draw do
     get 'customers/information/edit'=>'customers#edit'
     patch 'customers/information'=>'customers#update'
     get 'customers/confirm'=>'customers#confirm'
+    patch 'customers/unsubscribe'=>'customers#unsubscribe'
      get 'cart_items/index'
      get 'orders/new'
     get 'orders/index'
