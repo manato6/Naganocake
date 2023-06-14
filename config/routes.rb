@@ -16,8 +16,7 @@ namespace :admin do
 
 
   scope module: :public do
-    get 'items/index'
-    get 'items/show'
+    resources :items
     get "customers/mypage"=>'customers#show'
     get 'customers/information/edit'=>'customers#edit'
     patch 'customers/information'=>'customers#update'
