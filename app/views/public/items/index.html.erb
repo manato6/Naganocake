@@ -7,7 +7,7 @@
      <% @items.each do |item| %>
      <div class="col-lg-2 col-md-3">
       <%= image_tag item.get_image(400,400),class:"w-100" %>
-      <p><%= link_to item.name,admin_item_path(item) %></p>
+      <p><%= link_to item.name,item_path(item) %></p>
       <p><%= item.price %></p>
       </div>
   <% end %>
