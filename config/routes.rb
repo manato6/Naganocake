@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 namespace :admin do
   resources :items
   resources :customers
+  patch 'admin/customers/:id'=>'customers#update'
   end
 
 
