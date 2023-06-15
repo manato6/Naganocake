@@ -24,9 +24,7 @@ namespace :admin do
     get 'customers/confirm'=>'customers#confirm'
     patch 'customers/unsubscribe'=>'customers#unsubscribe'
      get 'cart_items/index'
-     get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
+     resources :orders
     get 'homes/top' => 'homes#top'
   get "homes/about"=>'homes#about'
   end
