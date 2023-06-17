@@ -1,2 +1,0 @@
-class Cartitem < ApplicationRecord
-end

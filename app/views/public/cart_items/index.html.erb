@@ -1,23 +1,26 @@
+<div class="container">
 <h1>ショッピングカート</h1>
 
  <table class="table table-hover table-inverse">
   <thead>
     <tr>
       <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-      <th>Title</th>
-      <th>Title</th>
-      <th colspan="3"></th>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>　　</th>
     </tr>
   </thead>
 
       <tbody>
          <% @cartitems.each do |cart_item| %>
         <tr>
-          <td></td>
-          <td></td>
+            <td><%= cart_item.item.with_tax_price %></td>
+          <td><%= cart_item.subtotal %></td>
+          <!--<%# @合計金額 +=  cart_item.subtotal %>-->
         </tr>
         <% end %>
      </tbody>
   </table>
+  </div>
