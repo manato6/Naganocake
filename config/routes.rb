@@ -26,6 +26,7 @@ namespace :admin do
     patch 'customers/unsubscribe'=>'customers#unsubscribe'
     resources :cart_items
     post 'cart_items'=>'cart_items#create'
+    patch 'cart_items/:id'=>'cart_items#update'
     resources :orders
     get 'homes/top' => 'homes#top'
   get "homes/about"=>'homes#about'
