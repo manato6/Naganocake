@@ -24,6 +24,7 @@ namespace :admin do
     patch 'customers/information'=>'customers#update'
     get 'customers/confirm'=>'customers#confirm'
     patch 'customers/unsubscribe'=>'customers#unsubscribe'
+    delete 'cart_items/all_destroy'=>'cart_items#all_destroy'
     resources :cart_items
     post 'cart_items'=>'cart_items#create'
     patch 'cart_items/:id'=>'cart_items#update'
