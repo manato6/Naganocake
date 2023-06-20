@@ -9,6 +9,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def confirm
+    @cartitems = CartItem.all
   end
   
 end
