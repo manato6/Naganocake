@@ -32,6 +32,7 @@ end
     post 'cart_items'=>'cart_items#create'
     patch 'cart_items/:id'=>'cart_items#update'
     post 'orders/confirm'=>'orders#confirm'
+    get 'orders/complete'=>'orders#complete'
     resources :orders
     get 'homes/top' => 'homes#top'
   get "homes/about"=>'homes#about'

@@ -16,6 +16,9 @@ class Public::OrdersController < ApplicationController
     @sum = params[:order][:sum]
   end
   
+  def complete
+  end
+  
   def order_params
     params.require(:order).permit(:payment_method)
   end
