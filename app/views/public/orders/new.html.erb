@@ -9,6 +9,20 @@
 <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
 <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
 
+
+<div>
+  <table>
+  <tr>
+      <th>お届け先</th>
+      <td><%=current_customer.postal_code%></td>
+      <td><%=current_customer.address%></td>
+  </tr>
+  <tr>
+      <td><%=current_customer.last_name%><%=current_customer.first_name%></td>
+  </tr>
+</table>
+</div>
+
 <div class="actions">
 <%= f.submit "確認画面へ進む",class:"btn btn-primary"%>
 <%= f.hidden_field :sum, :value => @sum %>

@@ -5,8 +5,25 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    
+  @order.save
+    cart_items = current_customer.cart_items.all
+    cart_items.each do |cart_item|
+       
+      order_detail = OrderDetail.new
+      order_detail.item_id = cart_item.item_id
+      order_detail.order_id = @order.id
+      order_detail.number = cart_item.amount
+# 購入が完了したらカート情報は削除するのでこちらに保存します
+      order_detail.purchase_price = cart_item.item.price
+# カート情報を削除するので item との紐付けが切れる前に保存します
+      order_detail.save
+    end
+    redirect_to orders_complete_path
+    cart_items.destroy_all
+# ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
+ 
   end
+
 
   def index
   end
@@ -15,7 +32,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @cartitems = CartItem.all
+    @cartitems = current_customer.cart_items.all
     @order = Order.new(order_params)
     @order.postage = 800
     @sum = params[:order][:sum]

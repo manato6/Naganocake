@@ -50,9 +50,28 @@
   </div>
  </div>
 
+<div>
+  <table>
+    <tr>
+      <th>支払い方法</th>
+      <td><%= @order.payment_method_i18n %></td>
+  </tr>
+   <tr>
+      <th>お届け先</th>
+      <td><%=current_customer.postal_code%></td>
+      <td><%=current_customer.address%></td>
+  </tr>
+  <tr>
+      <td><%=current_customer.last_name%><%=current_customer.first_name%></td>
+  </tr>
+</table>
+</div>
 
-  <%= @order.payment_method_i18n %>
-
+<%= f.hidden_field :payment_method, :value => @order.payment_method %>
+<%= f.hidden_field :destination_name, :value => @order.destination_name %>
+<%= f.hidden_field :delivery_postal_code, :value => @order.delivery_postal_code %>
+<%= f.hidden_field :shipping_address, :value => @order.delivery_postal_code %>
+<%= f.hidden_field :postage, :value => @order.postage %>
 <%= f.hidden_field :total_amount, :value => @order.postage + @sum.to_i %>
 <%= f.submit "注文を確定する",class:"btn btn-success"%>
 <% end %>
