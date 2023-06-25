@@ -30,6 +30,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+     @order = Order.find(params[:id])
+      @orders = Order.all
   end
 
   def confirm
@@ -43,7 +45,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:payment_method, :customers_id, :destination_name,:delivery_postal_code,:shipping_address,:postage,:total_amount)
+    params.require(:order).permit(:method_of_payment, :customers_id, :destination_name,:delivery_postal_code,:shipping_address,:postage,:total_amount)
   end
 
 end
