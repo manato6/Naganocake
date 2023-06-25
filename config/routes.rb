@@ -29,6 +29,8 @@ end
     patch 'customers/unsubscribe'=>'customers#unsubscribe'
     delete 'cart_items/all_destroy'=>'cart_items#all_destroy'
     # resources :cart_items
+    get 'orders/:id'=>'orders#show'
+    get 'orders'=>'orders#index'
      get 'order/new'=>'orders#new'
     get 'cart_items'=>'cart_items#index'
     post 'cart_items'=>'cart_items#create'

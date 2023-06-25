@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
   @order.save
     cart_items = current_customer.cart_items.all
     cart_items.each do |cart_item|
-       
+
       order_detail = OrderDetail.new
       order_detail.item_id = cart_item.item_id
       order_detail.order_id = @order.id
@@ -21,11 +21,12 @@ class Public::OrdersController < ApplicationController
     redirect_to orders_complete_path
     cart_items.destroy_all
 # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
- 
+
   end
 
 
   def index
+     @orders = Order.all
   end
 
   def show
