@@ -17,7 +17,7 @@
 
     <tr>
        <th>支払方法</th>
-       <td><%= @order.method_of_payment_i18n %></td>
+       <td><%= Order.method_of_payments_i18n[@order.method_of_payment] %></td>
     </tr>
   </thead>
   </table>
@@ -27,8 +27,12 @@
 <div class="col-md-4">
   <table class="table table-hover table-inverse">
     <tr>
+       <% sum = 0 %>
+     <% @order.order_details.each do |order_detail| %>
+      <% sum +=order_detail.subtotal %>
+     <% end %>
        <th>商品合計</th>
-       <td><%= @sum %></td>
+       <td><%= sum %></td>
     </tr>
 
     <tr>
@@ -38,7 +42,7 @@
 
     <tr>
        <th>請求金額</th>
-       <td><%= @order.postage + @sum.to_i %></td>
+       <td><%= @order.postage + sum.to_i %></td>
     </tr>
   </table>
   </div>
@@ -56,13 +60,15 @@
 
 
   <tbody>
+    <% sum = 0 %>
      <% @order.order_details.each do |order_detail| %>
    <tr>
       <td><%=order_detail.item.name %></td>
-      <td><%#= order.item.with_tax_price %></td>
-      <td><%#=order.amount %></td>
-      <td><%#= order.subtotal %></td>
+      <td><%= order_detail.item.with_tax_price %></td>
+      <td><%=order_detail.number %></td>
+      <td><%= order_detail.subtotal %></td>
   </tr>
+  <% sum +=order_detail.subtotal %>
   <% end %>
 </tbody>
 </table>

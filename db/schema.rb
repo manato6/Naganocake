@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2023_06_22_094109) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
     t.string "destination_name"
     t.string "delivery_postal_code"
     t.string "shipping_address"

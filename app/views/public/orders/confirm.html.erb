@@ -1,6 +1,6 @@
 <div class="container">
 <h1>注文情報確認画面</h1>
-<%= form_with model:@order, url:orders_path, method: :post do |f| %>
+<%= form_with model: @order, url:orders_path, method: :post do |f| %>
 <div class="row">
   <div class="col-md-7 offset-md-1">
 <table class="table table-hover table-inverse">
@@ -54,7 +54,7 @@
   <table>
     <tr>
       <th>支払い方法</th>
-      <td><%= @order.payment_method_i18n %></td>
+      <td><%= Order.method_of_payments_i18n[@order.method_of_payment] %></td>
   </tr>
    <tr>
       <th>お届け先</th>
@@ -70,7 +70,7 @@
 <%= f.hidden_field :method_of_payment, :value => @order.method_of_payment %>
 <%= f.hidden_field :destination_name, :value => @order.destination_name %>
 <%= f.hidden_field :delivery_postal_code, :value => @order.delivery_postal_code %>
-<%= f.hidden_field :shipping_address, :value => @order.delivery_postal_code %>
+<%= f.hidden_field :shipping_address, :value => @order.shipping_address %>
 <%= f.hidden_field :postage, :value => @order.postage %>
 <%= f.hidden_field :total_amount, :value => @order.postage + @sum.to_i %>
 <%= f.submit "注文を確定する",class:"btn btn-success"%>
