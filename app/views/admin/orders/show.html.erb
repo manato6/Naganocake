@@ -1,2 +1,74 @@
-<h1>注文履歴詳細</h1>
 
+<div class="container">
+<h1>注文履歴詳細</h1>
+<div class="row">
+<table>
+  <thead>
+    <tr>
+       <th>購入者</th>
+       <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
+    </tr>
+
+    <tr>
+       <th>注文日</th>
+       <td><%= @order.created_at.strftime('%Y/%m/%d')%></td>
+    </tr>
+
+    <tr>
+       <th>配送先</th>
+       <td><%=current_customer.postal_code%><%=current_customer.address%><br><%=current_customer.last_name%><%=current_customer.first_name%></td>
+    </tr>
+    <tr>
+       <th>支払方法</th>
+       <td><%= Order.method_of_payments_i18n[@order.method_of_payment] %></td>
+    </tr>
+  </thead>
+  </table>
+  </div>
+  
+  <div class="row">
+      <div class="col-md-7 offset-md-1">
+  <table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+     <% @order.order_details.each do |order_detail| %>
+   <tr>
+      <td><%=order_detail.item.name %></td>
+      <td><%= order_detail.item.with_tax_price %></td>
+      <td><%=order_detail.number %></td>
+      <td><%= order_detail.subtotal %></td>
+  </tr>
+  <% end %>
+  
+  <div class="col-md-4">
+  <table class="table table-hover table-inverse">
+    <tr>
+       <% sum = 0 %>
+     <% @order.order_details.each do |order_detail| %>
+      <% sum +=order_detail.subtotal %>
+     <% end %>
+       <th>商品合計</th>
+       <td><%= sum %></td>
+    </tr>
+
+    <tr>
+       <th>送料</th>
+       <td><%= @order.postage %></td>
+    </tr>
+
+    <tr>
+       <th>請求金額</th>
+       <td><%= @order.postage + sum.to_i %></td>
+    </tr>
+  </table>
+  </div>
+</div>
+</div>
