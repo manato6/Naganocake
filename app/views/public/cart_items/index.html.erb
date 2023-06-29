@@ -45,8 +45,11 @@
   </table>
   <%= link_to "買い物を続ける", items_path,class:"btn btn-primary"%>
   </div>
-  </div>
+ 
+ <div>
   <%= form_with  url:new_order_path, method: :get do |f| %>
 <%= f.hidden_field :sum, :value => sum %>
-<%= f.submit "情報入力に進む"%>
+<%= f.submit "情報入力に進む",class:"btn btn-success"%>
 <% end %>
+</div>
+ </div>
