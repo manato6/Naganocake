@@ -12,15 +12,15 @@ class Public::CustomersController < ApplicationController
     current_customer.update(customer_params)
     redirect_to customers_mypage_path
   end
-  
+
   def confirm
   end
-  
+
   def unsubscribe
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
-    redirect_to homes_top
+    redirect_to homes_top_path
   end
 
   private
