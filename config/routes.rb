@@ -17,7 +17,7 @@ namespace :admin do
   end
 
 scope module: :admin do
-  get 'admin'=>'homes#top'
+  get 'admin'=>'homes#top',as: 'admin_top'
 end
 
   scope module: :public do
@@ -28,12 +28,9 @@ end
     get 'customers/confirm'=>'customers#confirm'
     patch 'customers/unsubscribe'=>'customers#unsubscribe'
     delete 'cart_items/all_destroy'=>'cart_items#all_destroy'
-    # resources :cart_items
+    resources :cart_items,only: [:index, :create, :update, :destroy]
      get 'orders/complete'=>'orders#complete'
     resources :orders
-    get 'cart_items'=>'cart_items#index'
-    post 'cart_items'=>'cart_items#create'
-    patch 'cart_items/:id'=>'cart_items#update'
     post 'orders/confirm'=>'orders#confirm'
     get 'homes/top' => 'homes#top'
   get "homes/about"=>'homes#about'

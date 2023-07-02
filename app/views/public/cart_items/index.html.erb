@@ -24,12 +24,12 @@
             <td> </td>
             <td><%= image_tag cart_item.item.image, size: "70x70" %><%= cart_item.item.name %></td>
             <td><%= cart_item.item.with_tax_price %></td>
-            <%= form_with model: cart_item, url:cart_items_path(cart_item), method: :patch do |f| %>
+            <%= form_with model: cart_item, url:cart_item_path(cart_item), method: :patch do |f| %>
             <td><%= f.select :amount, *[1..3], { selected: cart_item.amount } %><%= f.submit '変更',class:"btn btn-success" %></td>
             <% end %>
           <td><%= cart_item.subtotal %></td>
           <% sum +=cart_item.subtotal %>
-          <td><%= link_to "削除する", cart_items_path(cart_item), method: :delete, "data-confirm" => "本当に削除しますか？",class:"btn btn-danger" %></td>
+          <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, "data-confirm" => "本当に削除しますか？",class:"btn btn-danger" %></td>
         </tr>
         <% end %>
       </tbody>
@@ -43,7 +43,7 @@
     </tr>
   </thead>
   </table>
-  <%= link_to "買い物を続ける", items_path,class:"btn btn-primary"%>
+  <%= link_to "買い物を続ける", homes_top_path,class:"btn btn-primary"%>
   </div>
  
  <div>
