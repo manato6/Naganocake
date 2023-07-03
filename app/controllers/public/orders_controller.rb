@@ -1,6 +1,11 @@
 class Public::OrdersController < ApplicationController
   def new
     @sum = params[:sum]
+
+    if current_customer.cart_items.all!=[]
+    else
+      redirect_to cart_items_path
+    end
   end
 
   def create
