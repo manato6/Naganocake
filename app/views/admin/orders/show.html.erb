@@ -6,7 +6,7 @@
   <thead>
     <tr>
        <th>購入者</th>
-       <td><%= @customer.last_name %><%= @customer.first_name %></td>
+       <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
     </tr>
 
     <tr>
@@ -16,7 +16,7 @@
 
     <tr>
        <th>配送先</th>
-       <td><%=@customer.postal_code%><%=@customer.address%><br><%=@customer.last_name%><%=@customer.first_name%></td>
+       <td><%=@order.customer.postal_code%><%=@order.customer.address%><br><%=@order.customer.last_name%><%=@order.customer.first_name%></td>
     </tr>
     <tr>
        <th>支払方法</th>
